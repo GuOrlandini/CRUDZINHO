@@ -10,9 +10,16 @@ async function query(queryObject) {
   }); // aqui é criado uma instância de conexão, esse objeto contém: host, port, user, password e database
 
   await client.connect(); // handshake com servidor postgres: abre conexão TCP -> envia credenciais -> autentica -> inicia sessão
-  const result = await client.query(queryObject); // envia sql para server -> postgres executa -> recebe resultado -> converte em objeto JS
-  await client.end();
-  return result;
+
+  // tratamento de erro para que as requisições sejam devidamente fechadas
+  try {
+    const result = await client.query(queryObject); // envia sql para server -> postgres executa -> recebe resultado -> converte em objeto JS
+    return result;
+  } catch (error) {
+    console.error(error);
+  } finally {
+    await client.end();
+  }
 }
 
 export default {
