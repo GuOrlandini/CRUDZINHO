@@ -13,11 +13,12 @@ async function status(request, response) {
     values: [databaseName],
   });
   const databaseUsedConnectionsValue = databaseUsedConnections.rows[0].count;
+
   response.status(200).json({
     updated_at: updatedAt,
     dependencies: {
       database: {
-        version: databaseVersionValue,
+        version: parseInt(databaseVersionValue),
         max_connections: parseInt(databaseMaxConnectionsValue),
         used_connections: databaseUsedConnectionsValue,
       },
