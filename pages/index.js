@@ -3,24 +3,21 @@ import { useEffect, useState } from "react";
 
 const CONTENT = {
   name: "Gustavo Orlandini",
-  role: "Full Stack Developer //\nSoftware Engineer",
+  role: "Desenvolvedor Web",
   tagline:
-    "Formado em Ciência da Computação pela UNIOESTE, com foco em Desenvolvimento Web e Engenharia de Software. Atuação consolidada em liderança técnica, gestão de equipes e engenharia de requisitos, com forte domínio de soft skills aplicadas ao contexto de qualidade de software",
+    "Formado em Ciência da Computação pela UNIOESTE, com foco em Desenvolvimento Web e Engenharia de Software. Atuação consolidada em liderança técnica, gestão de equipes e engenharia de requisitos, com forte domínio de soft skills aplicadas ao contexto de qualidade de software.",
   ctaLabel: "Me contrate",
   ctaHref: "mailto:guorlandini@outlook.com",
   photo: "/gustavo.png",
-  navLinks: ["Home", "About", "Services", "Portfolio", "Contact"],
+  navLinks: ["Página Inicial", "Sobre", "Serviços", "Portfólio", "Contato"],
 };
 
 export default function Home() {
   const [loaded, setLoaded] = useState(false);
-  const [cursorPos, setCursorPos] = useState({ x: -200, y: -200 });
 
+  // efeito do cursor glow
   useEffect(() => {
     setLoaded(true);
-    const move = (e) => setCursorPos({ x: e.clientX, y: e.clientY });
-    window.addEventListener("mousemove", move);
-    return () => window.removeEventListener("mousemove", move);
   }, []);
 
   return (
@@ -32,22 +29,6 @@ export default function Home() {
           rel="stylesheet"
         />
       </Head>
-
-      {/* cursor glow */}
-      <div
-        style={{
-          position: "fixed",
-          top: cursorPos.y - 200,
-          left: cursorPos.x - 200,
-          width: 400,
-          height: 400,
-          borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(26,107,255,0.12) 0%, transparent 70%)",
-          pointerEvents: "none",
-          zIndex: 0,
-          transition: "top 0.08s, left 0.08s",
-        }}
-      />
 
       <div className="root">
         {/* ── NAV ── */}
@@ -97,10 +78,6 @@ export default function Home() {
             <div className="hero__photo-bg" />
             <img src={CONTENT.photo} alt={CONTENT.name} className="hero__photo" />
             <div className="hero__photo-ring" />
-            <div className="hero__badge">
-              <span className="hero__badge-dot" />
-              Disponível para trabalhar
-            </div>
           </div>
 
           {/* scroll hint */}
