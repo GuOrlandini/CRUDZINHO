@@ -34,7 +34,7 @@ export default function EmConstrucao() {
             textDecoration: "none",
           }}
         >
-          Voltar para Home
+          Voltar para Página Inicial
         </a>
       </div>
 
