@@ -4,15 +4,14 @@ import { useEffect, useState } from "react";
 
 const CONTENT = {
   name: "Gustavo Orlandini",
-  navLinks: ["Home", "About", "Services", "Portfolio", "Contact"],
+  navLinks: ["Página Inicial", "Sobre Mim", "Portfólio", "Contato"],
 };
 
 const routes = {
-  home: "/",
-  about: "/em-construcao",
-  services: "/em-construcao",
-  portfolio: "/em-construcao",
-  contact: "/em-construcao",
+  "Página Inicial": "/",
+  "Sobre Mim": "/sobre-mim",
+  "Portfólio": "/portfolio",
+  "Contato": "/contato",
 };
 
 export default function Layout({ children }) {
@@ -42,7 +41,7 @@ export default function Layout({ children }) {
           <ul className="nav__links">
             {CONTENT.navLinks.map((l) => (
               <li key={l}>
-                <Link href={routes[l.toLowerCase()]}>{l}</Link>
+                <Link href={routes[l]}>{l}</Link>
               </li>
             ))}
           </ul>
